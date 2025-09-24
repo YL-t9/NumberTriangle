@@ -128,29 +128,7 @@ public class NumberTriangle {
         // so might want a variable for that.
         NumberTriangle top = null;
         String line = br.readLine();
-        ArrayList<NumberTriangle> prevRow = null;
-        while (line != null) {
-            // remove when done; this line is included so running starter code prints the contents of the file
-            String[] num_str = line.split("\\s+");
-            ArrayList<NumberTriangle> currRow = new ArrayList<>();
-            for (String x : num_str) {
-                int value = Integer.parseInt(x);
-                currRow.add(new NumberTriangle(value));
-            }
-            if ( prevRow!=null ) {
-                for (int i = 0; i < prevRow.size(); i++) {
-                    NumberTriangle parent = prevRow.get(i);
-                    parent.setLeft(currRow.get(i));
-                    parent.setRight(currRow.get(i + 1));
-                }
-            }
-            else{
-                top = currRow.get(0);
-            }
-            //read the next line
-            prevRow = currRow;
-            line = br.readLine();
-        }
+
         br.close();
         return top;
     }
