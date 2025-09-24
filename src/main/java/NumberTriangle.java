@@ -89,7 +89,20 @@ public class NumberTriangle {
      *
      */
     public int retrieve(String path) {
+        if (path.isEmpty()){
+            return this.getRoot();
+        }
+        else {
+            char step = path.charAt(0);
+            String rest = path.substring(1);
 
+            if (step == 'r') {
+                return this.right.retrieve(rest);
+            }
+            else  {
+                return this.left.retrieve(rest);
+            }
+        }
 
     }
 
@@ -110,8 +123,6 @@ public class NumberTriangle {
         InputStream inputStream = NumberTriangle.class.getClassLoader().getResourceAsStream(fname);
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
 
-
-
     }
 
     public static void main(String[] args) throws IOException {
@@ -125,3 +136,4 @@ public class NumberTriangle {
         System.out.println(mt.getRoot());
     }
 }
+
